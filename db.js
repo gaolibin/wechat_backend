@@ -5,11 +5,13 @@ const { MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_ADDRESS = "" } = process.env;
 
 const [host, port] = MYSQL_ADDRESS.split(":");
 
-const sequelize = new Sequelize("nodejs_demo", MYSQL_USERNAME, MYSQL_PASSWORD, {
+console.log(MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_ADDRESS)
+const sequelize = new Sequelize("wechat_app", MYSQL_USERNAME, MYSQL_PASSWORD, {
   host,
   port,
   dialect: "mysql" /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */,
 });
+
 
 // 定义数据模型
 const Counter = sequelize.define("Counter", {
@@ -22,7 +24,11 @@ const Counter = sequelize.define("Counter", {
 
 // 数据库初始化方法
 async function init() {
-  await Counter.sync({ alter: true });
+  try{
+    await Counter.sync({ alter: true });
+  }catch(err){
+    console.log(err)
+  }
 }
 
 // 导出初始化方法和模型

@@ -6,11 +6,15 @@ const { init: initDB, Counter } = require("./db");
 
 const logger = morgan("tiny");
 
+const userRouter = require("./services/user/index")
+
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 app.use(logger);
+
+app.use('/api/user', userRouter)
 
 // 首页
 app.get("/", async (req, res) => {

@@ -25,9 +25,9 @@
   "envParams": {},
   "customLogs": "stdout",
   "initialDelaySeconds": 2,
-  "dataBaseName": "nodejs_demo",
+  "dataBaseName": "wechat_app",
   "executeSQLs": [
-    "CREATE DATABASE IF NOT EXISTS nodejs_demo;",
-    "USE nodejs_demo;"
+    "CREATE DATABASE IF NOT EXISTS wechat_app;",
+    "USE wechat_app;"
   ]
 }
